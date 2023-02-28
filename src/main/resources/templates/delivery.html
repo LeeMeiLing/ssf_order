@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Delivery Details</title>
+</head>
+<body>
+    <h1>Order Delivery Details</h1>
+
+    <form method="POST" action="/pizza/order" data-th-object="${delivery}">
+        <div>
+            Name: <input type="text" name="name" placeholder="name" data-th-field="*{name}">
+        </div>
+        <div>
+            Address: <input type="text" name="address" placeholder="delivery address" data-th-field="*{address}"> 
+        </div>
+        <div>
+            Phone: <input type="number" name="phone" placeholder="phone number" data-th-field="*{phone}">
+        </div>
+        <div>
+            Rush: <input type="checkbox" name="rush" data-th-field="*{rush}">
+        </div>
+        <div>
+            Comments: <textarea name="comments" placeholder="Remarks for your order" data-th-field="*{comments}" rows="5" cols="50"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>
