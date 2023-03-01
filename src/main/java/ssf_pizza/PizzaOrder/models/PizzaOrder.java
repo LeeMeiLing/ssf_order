@@ -3,7 +3,6 @@ package ssf_pizza.PizzaOrder.models;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public class PizzaOrder {
@@ -69,4 +68,11 @@ public class PizzaOrder {
         return false;
         
     }
+
+    @Override
+    public String toString() {
+        return "PizzaOrder [pizza=" + pizza + ", size=" + size + ", quantity=" + quantity + "]";
+    }
+
+    
 }

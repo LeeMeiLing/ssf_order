@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Delivery Details</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <h1>Order Delivery Details</h1>
@@ -12,15 +13,22 @@
     <form method="POST" action="/pizza/order" data-th-object="${delivery}">
         <div>
             Name: <input type="text" name="name" placeholder="name" data-th-field="*{name}">
+            <span class="error" data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"></span>
         </div>
         <div>
             Address: <input type="text" name="address" placeholder="delivery address" data-th-field="*{address}"> 
+            <span class="error" data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"></span>
+
         </div>
         <div>
-            Phone: <input type="number" name="phone" placeholder="phone number" data-th-field="*{phone}">
+            Phone: <input type="text" name="phone" placeholder="phone number" data-th-field="*{phone}">
+            <span class="error" data-th-if="${#fields.hasErrors('phone')}" data-th-errors="*{phone}"></span>
+
         </div>
         <div>
-            Rush: <input type="checkbox" name="rush" data-th-field="*{rush}">
+            Rush: <input type="checkbox" name="rush" value="true" data-th-field="*{rush}">
+            <input type="hidden" name="rush" value="false">
+        </div>
         </div>
         <div>
             Comments: <textarea name="comments" placeholder="Remarks for your order" data-th-field="*{comments}" rows="5" cols="50"></textarea>

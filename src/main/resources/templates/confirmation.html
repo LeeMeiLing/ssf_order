@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed</title>
+</head>
+<body>
+    <div>
+        <h1>Delivery Details</h1>
+        <br><br>
+        <p>Order Number: <a data-th-href="@{/order/{orderId}(orderId=${confirmation.orderId})}"><span data-th-text="${confirmation.orderId}"></span></a></p>
+        <br>
+        <p>Your order will be delivered to <span data-th-text="${confirmation.address}"></span></p>
+        <br>
+        <p>Pizza cost: <span data-th-text="${confirmation.total}"></span></p>
+        <br>
+        <p data-th-if="${confirmation.rush}">Rush: $2</p>
+        <br>
+        <p>Total cost: <span data-th-text="${confirmation.total}"></span></p>
+    </div>
+</body>
+</html>

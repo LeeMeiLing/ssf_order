@@ -13,7 +13,7 @@
 			<h2>Panucci's Pizza</h2>
 		</div>
 
-		<form method="POST" action="/pizza" data-th-object="${order}">
+		<form method="POST" data-th-action="@{/pizza}" data-th-object="${pizzaOrder}">
 			<div>
 				<h2>Select a pizza</h2>
 				<table>
