@@ -14,7 +14,7 @@
         <br>
         <p>Your order will be delivered to <span data-th-text="${confirmation.address}"></span></p>
         <br>
-        <p>Pizza cost: <span data-th-text="${confirmation.total}"></span></p>
+        <p>Pizza cost: <span data-th-text="${confirmation.total}-2.0"></span></p>
         <br>
         <p data-th-if="${confirmation.rush}">Rush: $2</p>
         <br>

@@ -31,17 +31,18 @@ public class PizzaController {
     private Logger logger = Logger.getLogger(PizzaController.class.getName());
 
     @GetMapping
-    public String home(Model model, HttpSession session) {
+    public String home(Model model, HttpSession session) {       // instantiate session here so the session start with GET first request 
 
-        PizzaOrder pizzaOrder = (PizzaOrder) session.getAttribute("pizzaOrder");
+        // PizzaOrder pizzaOrder = (PizzaOrder) session.getAttribute("pizzaOrder");
 
-        if (null == pizzaOrder) {
+        // if (null == pizzaOrder) {
 
-            pizzaOrder = new PizzaOrder();
-            session.setAttribute("pizzaOrder", pizzaOrder);
+        //     pizzaOrder = new PizzaOrder();
+        //     session.setAttribute("pizzaOrder", pizzaOrder);
 
-        }
+        // }
 
+        PizzaOrder pizzaOrder = new PizzaOrder();
         model.addAttribute("pizzaOrder", pizzaOrder);
         return "index";
 
@@ -79,14 +80,15 @@ public class PizzaController {
             session.setAttribute("pizzaOrder",pizzaOrder);
 
             // if no error proceed to delivery address page
-            Delivery delivery = (Delivery) session.getAttribute("delivery");
+            // Delivery delivery = (Delivery) session.getAttribute("delivery");
 
-            if (null == delivery) {
+            // if (null == delivery) {
 
-                delivery = new Delivery();
-                session.setAttribute("delivery", delivery);
-            }
+            //     delivery = new Delivery();
+            //     session.setAttribute("delivery", delivery);
+            // }
 
+            Delivery delivery = new Delivery();
             model.addAttribute("delivery", delivery);
             return "delivery";
 
