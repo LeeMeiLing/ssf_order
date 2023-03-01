@@ -14,11 +14,13 @@
         <br>
         <p>Your order will be delivered to <span data-th-text="${confirmation.address}"></span></p>
         <br>
-        <p>Pizza cost: <span data-th-text="${confirmation.total}-2.0"></span></p>
+        <!-- <p data-th-if="${confirmation.rush}">Pizza cost: $ <span  data-th-text="${#numbers.formatDecimal(confirmation.total-2.0,1)}"></span></p> -->
+        <p data-th-if="${confirmation.rush}">Pizza cost: $ <span data-th-text="${#numbers.formatDecimal((confirmation.total-2.0), 1, 1)}"></span></p>
+        <p data-th-unless="${confirmation.rush}">Pizza cost: $ <span data-th-text="${confirmation.total}"></span></p>
         <br>
         <p data-th-if="${confirmation.rush}">Rush: $2</p>
         <br>
-        <p>Total cost: <span data-th-text="${confirmation.total}"></span></p>
+        <p>Total cost: $ <span data-th-text="${confirmation.total}"></span></p>
     </div>
 </body>
 </html>

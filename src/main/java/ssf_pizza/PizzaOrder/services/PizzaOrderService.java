@@ -1,10 +1,15 @@
 package ssf_pizza.PizzaOrder.services;
 
+import java.io.StringReader;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
 import jakarta.servlet.http.HttpSession;
 import ssf_pizza.PizzaOrder.models.Confirmation;
 import ssf_pizza.PizzaOrder.models.Delivery;
@@ -86,6 +91,20 @@ private PizzaOrderRepo orderRepo;
 
         // generate confirmation & return view page
         return confirmation;
+
+    }
+
+    public Optional<JsonObject> getOrder(String orderId) {
+
+        Optional<String> order = orderRepo.getOrder(orderId);
+
+        if(null == order){
+            return Optional.empty();
+        }else{
+            JsonReader reader = Json.createReader(new StringReader(order.get()));
+            JsonObject json = reader.readObject();
+            return Optional.of(json);
+        }
 
     }
 

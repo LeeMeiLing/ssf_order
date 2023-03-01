@@ -1,5 +1,7 @@
 package ssf_pizza.PizzaOrder.repositories;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -36,6 +38,17 @@ public class PizzaOrderRepo {
 
         // save to redis
         redisTemplate.opsForValue().set(conf.getOrderId(), json.toString());
+
+    }
+
+    public Optional<String> getOrder(String orderId) {
+
+        String result = (String) redisTemplate.opsForValue().get(orderId);
+        if (null == result){
+            return Optional.empty();
+        }else{
+            return Optional.of(result);
+        }
 
     }
     
