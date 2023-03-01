@@ -98,7 +98,7 @@ private PizzaOrderRepo orderRepo;
 
         Optional<String> order = orderRepo.getOrder(orderId);
 
-        if(null == order){
+        if(order.isEmpty()){
             return Optional.empty();
         }else{
             JsonReader reader = Json.createReader(new StringReader(order.get()));

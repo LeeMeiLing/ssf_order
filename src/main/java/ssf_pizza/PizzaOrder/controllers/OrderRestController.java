@@ -30,14 +30,15 @@ public class OrderRestController {
         Optional<JsonObject> order = orderSvc.getOrder(orderId);
 
         
-        if(null == order){
+        if(order.isEmpty()){  // dont use null == order
+            
             // if orderID not found
             JsonObject json = Json.createObjectBuilder()
             .add("message","Order %s not found".formatted(orderId))
             .build();
 
             return ResponseEntity.status(404).body(json.toString());
-            
+
         }else{
             // return as JSON with status ok
             return ResponseEntity.status(200).body(order.toString());
